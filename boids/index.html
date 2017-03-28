@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<title>TV Boids</title>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	<style>
+		* { margin: 0; padding: 0;}
+		body, html {
+			height: 100%;
+			overflow: hidden;
+		}
+		#config {
+			position: absolute;
+			bottom: 16px;
+			left: 16px;
+			opacity: 0.1;
+		}
+		#config:hover { opacity: 1; }
+		#canvas {
+			/*position: absolute;*/
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<div id="config">
+		<button onclick="debug()">debug</button>
+		<button onclick="init()">init</button>
+		<button onclick="play()">play</button>
+		<button onclick="pause()">pause</button>
+		<div>
+			<b>Speed:</b>
+			<label><input type="radio" name="TIME_WARP" value="0.1" onchange="TIME_WARP=this.value"> 10%</label>
+			<label><input type="radio" name="TIME_WARP" value="0.25" onchange="TIME_WARP=this.value"> 25%</label>
+			<label><input type="radio" name="TIME_WARP" value="0.5" onchange="TIME_WARP=this.value"> 50%</label>
+			<label><input type="radio" name="TIME_WARP" value="1" onchange="TIME_WARP=this.value" checked> 100%</label>
+			<label><input type="radio" name="TIME_WARP" value="2" onchange="TIME_WARP=this.value"> 200%</label>
+			<label><input type="radio" name="TIME_WARP" value="5" onchange="TIME_WARP=this.value"> 500%</label>
+			<label><input type="radio" name="TIME_WARP" value="10" onchange="TIME_WARP=this.value"> 1000%</label>
+		</div>
+		<div>
+			<button onclick="more_boids()">more</button>
+			<button onclick="spawn_red()">red</button>
+			<span style='color:#f00'>sep</span>
+			<span style='color:#0f0'>ali</span>
+			<span style='color:#00f'>coh</span>
+			<span style='color:#000'>acc</span>
+			<span style='color:#bbb'>vel</span>
+		</div>
+	</div>
+	<script src="vector.js"></script>
+	<script src="boids.js"></script>
+	<script src="demo.js"></script>
+	<script>
+		$("#canvas").mousemove(function(event){ mousemove(event.clientX, event.clientY); });
+	</script>
+</body>
+</html>
